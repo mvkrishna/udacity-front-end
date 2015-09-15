@@ -17,4 +17,4 @@ List of projects
 
 Certificate
 ----------------------
-![image](certificate.pdf)
+![image](certificate.png)
