@@ -14,3 +14,7 @@ List of projects
   * project4-website-optimization
   * project5-neighbourhood-map
   * project6-feed-reader
+
+Certificate
+----------------------
+![image](certificate.pdf)
