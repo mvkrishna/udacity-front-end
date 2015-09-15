@@ -1,0 +1,24 @@
+
+@import url(http://fonts.googleapis.com/css?family=Lato:100,400,700);
+
+* {
+  font-family:"Lato", sans-serif;
+}
+
+h1 {
+  font-size:50px;
+}
+
+.url {
+  font: 100 1em/1.5em "Lato";
+}
+
+h5,
+.project-title {
+  color:#747704;
+}
+
+hr,
+.featured-title {
+  color:#BCBBBB;
+}

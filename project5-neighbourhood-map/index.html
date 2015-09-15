@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+      <title>Bart Locations & weather</title>
+      <!-- Googgle maps javascript -->
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+      <!-- Jquery javascript -->
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <!--Minified Knockout js  JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+      <!--style.css-->
+      <link rel="stylesheet" href="style.css" media="all">
+   </head>
+   <body>
+      <div id="wrapper">
+         <!-- Sidebar -->
+         <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+               <li class="sidebar-brand">
+                  <a href="#" class="navbar-brand">Bart Locations</a>
+               </li>
+               <div class="input-group">
+                  <span class="input-group-btn"></span>
+                  <input id="address" class="form-control input-sm" type="textbox" placeholder="Station location" data-bind="value: searchKey,  event: { keyup: searchKeyUp }">
+                  <span class="input-group-btn">
+                  <button class="btn btn-sm btn-primary" data-bind="click: filterStations">
+                  <span class="glyphicon glyphicon-filter"></span> Filter
+                  </button>
+                  </span>
+               </div>
+               <div data-bind="foreach: filteredList">
+                  <li>
+                     <a data-bind="click: function () { selectedStation($index())}">
+                     <span data-bind="text:  $data.name,visible: $data.visible">1</span>
+                     </a>
+                  </li>
+               </div>
+            </ul>
+         </div>
+         <!-- /#sidebar-wrapper -->
+         <!-- Page Content -->
+         <div id="page-content-wrapper">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-lg-12">
+                     <a href="#menu-toggle" id="menu-toggle">
+                     <i class="glyphicon glyphicon-align-justify"></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div clas="row">
+           <div id="map-canvas"></div>
+
+         </div>
+         <!-- /#page-content-wrapper -->
+      </div>
+      <!-- /#wrapper -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <span class="glyphicon glyphicon-map-marker"></span>
+                  <b>
+                  <span data-bind="text: selectedPlace"></span>	weather forecast
+                  </b>
+               </div>
+               <div class="modal-body">
+                  <div id=modalBodyContent>
+                     <table class="table table-bordered white-background">
+                        <thead>
+                           <tr>
+                              <td>Day</td>
+                              <td>Temperature</td>
+                              <td>Weather</td>
+                              <td>Pressure</td>
+                              <td>Humidity</td>
+                           </tr>
+                        </thead>
+                        <tbody data-bind="foreach: weatherDetails">
+                           <tr>
+                              <td data-bind="text:   ($index() + 1)">1</td>
+                              <td data-bind="text:  $data.temp.day">1</td>
+                              <td data-bind="text:  $data.weather[0].main">1</td>
+                              <td data-bind="text:  $data.pressure">1</td>
+                              <td data-bind="text:  $data.humidity">1</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+            <!-- /.modal-content -->
+         </div>
+         <!-- /.modal-dialog -->
+      </div>
+   </body>
+   <!--main.js-->
+   <script src="main.js"></script>
+</html>
